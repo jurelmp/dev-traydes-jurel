@@ -7,6 +7,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Create</div>
                     <div class="panel-body">
+
+                        @include('auth.partials.errors')
+                        @include('auth.partials.success')
+
                         {!! Form::open(array('url' => '/auth/register', 'class' => 'form-horizontal', 'role' => 'form')) !!}
                         <div class="form-group">
                             <label class="col-md-4 control-label">First Name</label>
