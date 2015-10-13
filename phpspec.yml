@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Traydes
+        psr4_prefix: Traydes
+        src_path: app
