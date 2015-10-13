@@ -2,6 +2,7 @@
 
 namespace Traydes\Http\Controllers\Auth;
 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Traydes\User;
 use Validator;
 use Traydes\Http\Controllers\Controller;
@@ -22,6 +23,10 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    //use AuthenticatesUsers;
+
+    protected $redirectAfterLogout = '/auth/login';
+    protected $redirectTo = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -46,6 +51,7 @@ class AuthController extends Controller
             'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required',
         ]);
     }
 

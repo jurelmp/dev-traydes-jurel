@@ -17,9 +17,16 @@ get('/', function () {
 
 get('/test', function()
 {
-//   return view('layout.master');
     return view('auth.create');
 });
+
+/**
+ * logging in and out
+ */
+//get('/auth/login', 'Auth\AuthController@getLogin');
+//post('/auth/login', 'Auth\AuthController@postLogin');
+//get('/auth/logout', 'Auth\AuthController@getLogout');
+Route::controller('/auth', 'Auth\AuthController');
 
 /*
 Route::group(array('domain' => '{subdomain}.'), function()
