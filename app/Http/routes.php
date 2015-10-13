@@ -11,7 +11,11 @@
 |
 */
 
-get('/', function () {
+get('/', function() {
+    return redirect('home');
+});
+
+get('/home', function () {
     return view('welcome');
 });
 
@@ -27,6 +31,7 @@ get('/test', function()
 //post('/auth/login', 'Auth\AuthController@postLogin');
 //get('/auth/logout', 'Auth\AuthController@getLogout');
 Route::controller('/auth', 'Auth\AuthController');
+Route::controller('/password', 'Auth\PasswordController');
 
 /*
 Route::group(array('domain' => '{subdomain}.'), function()

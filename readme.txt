@@ -25,7 +25,6 @@ college/universities management
 blog management
 analytics
 
-
 Notes
 -------------------------
 -initial setup

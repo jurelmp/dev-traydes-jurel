@@ -30,13 +30,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand">{{ config('traydes.title') }}</a>
+                <a href="{{ url('/') }}" class="navbar-brand">{{ config('traydes.title') }}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Create</a></li>
+                    <li><a href="{{ url('auth/login') }}">Login</a></li>
+                    <li><a href="{{ url('auth/register') }}">Create</a></li>
                 </ul>
             </div>
         </div>
