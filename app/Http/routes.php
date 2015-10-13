@@ -26,6 +26,7 @@ get('/test', function()
 
 /**
  * logging in and out
+ * password reset/reminders
  */
 //get('/auth/login', 'Auth\AuthController@getLogin');
 //post('/auth/login', 'Auth\AuthController@postLogin');
