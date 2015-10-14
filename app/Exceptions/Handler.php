@@ -47,11 +47,11 @@ class Handler extends ExceptionHandler
         }
 
         /**
-         * added custome view for error 404
+         * added custom view for error 404
          */
-        if($e instanceof CustomException) {
-            return response()->view('errors.404', [], 404);
-        }
+//        if($e instanceof CustomException) {
+//            return response()->view('errors.404', [], 404);
+//        }
 
         return parent::render($request, $e);
     }
