@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="well">
-                Not Found
+                <legend>Whoops!</legend>
+                Page Not Found !
             </div>
         </div>
     </div>

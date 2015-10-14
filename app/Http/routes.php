@@ -21,18 +21,21 @@ get('/home', function () {
 
 get('/test', function()
 {
-    return view('auth.create');
+    return view('user.index');
 });
 
 /**
  * logging in and out
  * password reset/reminders
  */
-//get('/auth/login', 'Auth\AuthController@getLogin');
-//post('/auth/login', 'Auth\AuthController@postLogin');
-//get('/auth/logout', 'Auth\AuthController@getLogout');
 Route::controller('/auth', 'Auth\AuthController');
 Route::controller('/password', 'Auth\PasswordController');
+
+/**
+ * user routes
+ */
+Route::controller('/user', 'User\UserController');
+
 
 /*
 Route::group(array('domain' => '{subdomain}.'), function()
