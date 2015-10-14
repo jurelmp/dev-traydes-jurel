@@ -46,6 +46,13 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
+        /**
+         * added custome view for error 404
+         */
+        if($e instanceof CustomException) {
+            return response()->view('errors.404', [], 404);
+        }
+
         return parent::render($request, $e);
     }
 }
