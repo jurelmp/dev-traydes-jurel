@@ -2,6 +2,8 @@
 
 namespace Traydes\Http\Controllers\User;
 
+use Traydes\UserProfile;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,7 +58,47 @@ class UserController extends Controller
      */
     public function getProfile()
     {
-        return view('user.profile');
+        $profile = Auth::user()->userProfile()->get();
+
+        if(count($profile) == 0) {
+            $p = new UserProfile();
+            $p->address = '';
+            $p->contact_no = '';
+            Auth::user()->userProfile()->save($p);
+        }
+
+        return view('user.profile')
+            ->with('profile', $profile);
+    }
+
+    /**
+     * update user profile of authenticated user
+     * @param Request $request
+     * @return mixed
+     */
+    public function postProfile(Request $request)
+    {
+        //$profile = new UserProfile();
+//        $profile = Auth::user()->userProfile();
+
+//        if(count($profile) > 0) {
+//            $profile->address = $request->get('address');
+//            $profile->contact_no = $request->get('contact_no');
+//            Auth::user()->userProfile()->save($profile);
+//        } else {
+//            $p = new UserProfile();
+//            $p->address = $request->get('address');
+//            $p->contact_no = $request->get('contact_no');
+//            Auth::user()->userProfile()->save($p);
+//        }
+
+        $profile = UserProfile::where('user_id', '=', Auth::user()->id)->firstOrFail();
+        $profile->address = $request->get('address');
+        $profile->contact_no = $request->get('contact_no');
+        $profile->save();
+
+        return redirect('user/profile')
+            ->withSuccess('Changes Saved!');
     }
 
 }

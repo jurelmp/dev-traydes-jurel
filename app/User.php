@@ -36,4 +36,13 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * get the phone associated with user
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function userProfile()
+    {
+        return $this->hasOne('Traydes\UserProfile');
+    }
 }
