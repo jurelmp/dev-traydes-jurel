@@ -23,14 +23,14 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Address</label>
                                     <div class="col-md-6">
-                                        {!! Form::textarea('address', null, array('class' => 'form-control', 'rows' => '3', 'placeholder' => 'Address')) !!}
+                                        {!! Form::textarea('address', $profile->address, array('class' => 'form-control', 'rows' => '3', 'placeholder' => 'Address')) !!}
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Contact No</label>
                                     <div class="col-md-6">
-                                        {!! Form::text('contact_no', null, array('class' => 'form-control', 'placeholder' => 'Contact No')) !!}
+                                        {!! Form::text('contact_no', $profile->contact_no, array('class' => 'form-control', 'placeholder' => 'Contact No')) !!}
                                     </div>
                                 </div>
 

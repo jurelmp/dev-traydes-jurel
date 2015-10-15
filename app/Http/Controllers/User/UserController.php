@@ -2,6 +2,7 @@
 
 namespace Traydes\Http\Controllers\User;
 
+use Traydes\User;
 use Traydes\UserProfile;
 
 use Illuminate\Http\Request;
@@ -58,17 +59,18 @@ class UserController extends Controller
      */
     public function getProfile()
     {
-        $profile = Auth::user()->userProfile()->get();
+        $profile = UserProfile::where('user_id', '=', Auth::user()->id)->first();
+        $data = null;
 
-        if(count($profile) == 0) {
+        if(empty($profile)) {
             $p = new UserProfile();
             $p->address = '';
             $p->contact_no = '';
             Auth::user()->userProfile()->save($p);
+            $profile = $p;
         }
 
-        return view('user.profile')
-            ->with('profile', $profile);
+        return view('user.profile', ['profile' => $profile]);
     }
 
     /**
@@ -92,7 +94,7 @@ class UserController extends Controller
 //            Auth::user()->userProfile()->save($p);
 //        }
 
-        $profile = UserProfile::where('user_id', '=', Auth::user()->id)->firstOrFail();
+        $profile = UserProfile::where('user_id', '=', Auth::user()->id)->first();
         $profile->address = $request->get('address');
         $profile->contact_no = $request->get('contact_no');
         $profile->save();

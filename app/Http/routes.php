@@ -11,18 +11,27 @@
 |
 */
 
-get('/', function() {
+Route::get('/', function() {
     return redirect('home');
 });
 
-get('/home', function () {
-    return view('welcome');
+Route::get('/login', function() {
+    return redirect('auth/login');
 });
 
-get('/test', function()
-{
+Route::get('/register', function() {
+    return redirect('auth/register');
+});
+
+Route::get('/test', function() {
     return view('user.index');
 });
+
+/**
+ * resource controller for user category/post
+ */
+Route::resource('/category', 'CategoryController');
+Route::resource('/post', 'PostController');
 
 /**
  * logging in and out
@@ -31,11 +40,19 @@ get('/test', function()
 Route::controller('/auth', 'Auth\AuthController');
 Route::controller('/password', 'Auth\PasswordController');
 
-/**
- * user routes
- */
-Route::controller('/user', 'User\UserController');
+Route::group(['middleware' => 'auth'], function() {
+    /**
+     * user route
+     */
+    Route::controller('/user', 'User\UserController');
 
+    /**
+     * home route
+     */
+    Route::get('/home', function () {
+        return view('welcome');
+    });
+});
 
 /*
 Route::group(array('domain' => '{subdomain}.'), function()

@@ -35,13 +35,18 @@
 
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
-                    @if(!Request::is('auth/login'))
-                        <li><a href="{{ url('auth/login') }}">Login</a></li>
+                    @if(Auth::check())
+                        <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+                    @else
+                        @if(!Request::is('auth/login'))
+                            <li><a href="{{ url('auth/login') }}">Login</a></li>
+                        @endif
+
+                        @if(!Request::is('auth/register'))
+                            <li><a href="{{ url('auth/register') }}">Create</a></li>
+                        @endif
                     @endif
 
-                    @if(!Request::is('auth/register'))
-                        <li><a href="{{ url('auth/register') }}">Create</a></li>
-                    @endif
                 </ul>
             </div>
         </div>

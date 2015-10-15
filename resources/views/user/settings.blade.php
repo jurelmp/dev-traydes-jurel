@@ -27,9 +27,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Old Password</label>
+                                    <label class="col-md-4 control-label">Current Password</label>
                                     <div class="col-md-6">
-                                        {!! Form::password('old_password', array('placeholder' => 'Old Password', 'class' => 'form-control')) !!}
+                                        {!! Form::password('old_password', array('placeholder' => 'Current Password', 'class' => 'form-control')) !!}
                                     </div>
                                 </div>
 
