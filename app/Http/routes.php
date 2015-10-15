@@ -30,8 +30,8 @@ Route::get('/test', function() {
 /**
  * resource controller for user category/post
  */
-Route::resource('/category', 'CategoryController');
-Route::resource('/post', 'PostController');
+Route::resource('/categories', 'User\CategoryController');
+Route::resource('/categories.posts', 'User\PostController');
 
 /**
  * logging in and out

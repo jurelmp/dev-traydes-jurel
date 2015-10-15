@@ -37,3 +37,9 @@ Notes
     $bower update
     $gulp copyfiles
     $gulp
+
+
+nested relationship ref:
+http://stackoverflow.com/questions/24672629/laravel-orm-from-self-referencing-table-get-n-level-hierarchy-json
+https://laracasts.com/discuss/channels/general-discussion/recursive-relationship
+http://heera.it/laravel-model-relationship#.Vh__uHqqqko
