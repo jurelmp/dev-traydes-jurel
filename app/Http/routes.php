@@ -43,6 +43,9 @@ Route::resource('/categories.posts', 'User\PostController');
 Route::controller('/auth', 'Auth\AuthController');
 Route::controller('/password', 'Auth\PasswordController');
 
+/**
+ * protected routes
+ */
 Route::group(['middleware' => 'auth'], function() {
     /**
      * user route
@@ -57,6 +60,19 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
+/**
+ * admin routes
+ */
+//Route::group(['prefix' => 'admin'], function() {
+//    Route::controller('u', 'Admin\AdminController');
+//    Route::resource('categories', 'Admin\CategoryController');
+//    Route::controller('colleges', 'Admin\CollegeController');
+//    Route::controller('users', 'Admin\UserController');
+//});
+
+/**
+ * sub domain routing for areas
+ */
 /*
 Route::group(array('domain' => '{subdomain}.'), function()
 {
