@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Traydes\Http\Requests;
 use Traydes\Http\Controllers\Controller;
 
+use Traydes\Category;
+
 class CategoryController extends Controller
 {
     /**
@@ -15,7 +17,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('user.categories.index');
+        //$cat = Traydes\Category::find(0);
+        $categories = Category::find(0)->subCategories()->get();
+
+        return view('user.categories.index', ['categories' => $categories]);
     }
 
     /**
@@ -47,7 +52,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $sub_categories = Category::find($id)->subCategories()->get();
+        $cat = Category::find($id);
+        return view('user.categories.show', ['sub_categories' => $sub_categories, 'cat' => $cat]);
     }
 
     /**

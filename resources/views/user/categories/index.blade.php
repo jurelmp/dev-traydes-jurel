@@ -3,56 +3,20 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
+            @foreach($categories as $category)
+                <div class="col-md-4">
+                    <ul class="list-group">
+                        <a href="{{ route('categories.show', [$category->id]) }}" class="list-group-item active"><strong>{{ $category->name }}</strong></a>
+                        @if($category->subCategories->count())
+
+                            @foreach($category->subCategories as $sub)
+                                <a href="{{ route('categories.show', [$sub->id]) }}" class="list-group-item">{{ $sub->name }}</a>
+                            @endforeach
+
+                        @endif
+                    </ul>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="well">
-                    <legend>Category Title</legend>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @stop

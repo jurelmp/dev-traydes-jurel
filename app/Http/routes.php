@@ -23,9 +23,12 @@ Route::get('/register', function() {
     return redirect('auth/register');
 });
 
-Route::get('/test', function() {
-    return view('user.index');
-});
+//Route::get('/test', function() {
+//    $cat = Traydes\Category::find(0);
+//    $categories = $cat->subCategories()->get();
+//    return view('user.index')
+//        ->with('cat', $categories);
+//});
 
 /**
  * resource controller for user category/post
