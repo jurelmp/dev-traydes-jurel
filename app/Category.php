@@ -35,32 +35,32 @@ class Category extends Model
         return $this->hasMany('Traydes\Post');
     }
 
-    /*
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     * @return sub categories
-     *
-    public function nestedCategories()
-    {
-        return $this->hasMany('Traydes\Category', 'parent_id');
-    }
-    */
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      * @return subcategories of a category
      */
-    public function subCategories()
-    {
-        return $this->hasMany('Traydes\Category', 'parent_id', 'id');
-    }
-
 //    public function subCategories()
 //    {
-//        return $this->hasMany('App\Category', 'parent_id', 'id');
+//        return $this->hasMany('Traydes\Category', 'parent_id', 'id');
 //    }
-//
-//    public function parentCategory()
-//    {
-//        return $this->hasOne('App\Category', 'id', 'parent_id');
-//    }
+
+    /**
+     * The children categories of a Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function subCategories()
+    {
+        return $this->hasMany('App\Category', 'parent_id', 'id');
+    }
+
+    /**
+     * The parent Category of a child category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function parentCategory()
+    {
+        return $this->hasOne('App\Category', 'id', 'parent_id');
+    }
 }

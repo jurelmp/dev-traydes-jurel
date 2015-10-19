@@ -17,5 +17,7 @@ class UserTableSeeder extends Seeder
             'email' => 'patocjurel@gmail.com',
             'password' => bcrypt('password1'),
         ]);
+
+        factory(Traydes\User::class, 10)->create();
     }
 }
