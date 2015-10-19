@@ -53,4 +53,14 @@ class Category extends Model
     {
         return $this->hasMany('Traydes\Category', 'parent_id', 'id');
     }
+
+//    public function subCategories()
+//    {
+//        return $this->hasMany('App\Category', 'parent_id', 'id');
+//    }
+//
+//    public function parentCategory()
+//    {
+//        return $this->hasOne('App\Category', 'id', 'parent_id');
+//    }
 }
