@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function() {
-    return redirect('home');
+    return redirect('categories');
 });
 
 Route::get('/login', function() {
@@ -35,8 +35,8 @@ Route::resource('/categories.posts', 'User\PostController');
  * logging in and out
  * password reset/reminders
  */
-//Route::controller('/auth', 'Auth\AuthController');
-//Route::controller('/password', 'Auth\PasswordController');
+Route::controller('/auth', 'Auth\AuthController');
+Route::controller('/password', 'Auth\PasswordController');
 
 /**
  * protected routes
