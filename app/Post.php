@@ -12,7 +12,8 @@ class Post extends Model
     /**
      * @var array
      */
-    protected $dates = ['deleted_at'];
+
+    protected $dates = ['deleted_at', 'published_at'];
     protected $table = 'posts';
 
     /**
@@ -33,5 +34,14 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo('Traydes\Category');
+    }
+
+    /**
+     * get the user resource
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('Traydes\User');
     }
 }

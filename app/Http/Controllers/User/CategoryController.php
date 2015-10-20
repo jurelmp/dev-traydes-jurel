@@ -3,6 +3,7 @@
 namespace Traydes\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use Traydes\Category;
 use Traydes\Http\Requests;
 use Traydes\Http\Controllers\Controller;
 
@@ -15,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('user.categories.index');
+        $categories = Category::where('parent_id', 0)->get();
+        return view('user.categories.index', ['categories' => $categories]);
     }
 
     /**

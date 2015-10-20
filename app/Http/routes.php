@@ -23,12 +23,7 @@ Route::get('/register', function() {
     return redirect('auth/register');
 });
 
-//Route::get('/test', function() {
-//    $cat = Traydes\Category::find(0);
-//    $categories = $cat->subCategories()->get();
-//    return view('user.index')
-//        ->with('cat', $categories);
-//});
+//Route::get('/test', function() {});
 
 /**
  * resource controller for user category/post
@@ -40,8 +35,8 @@ Route::resource('/categories.posts', 'User\PostController');
  * logging in and out
  * password reset/reminders
  */
-Route::controller('/auth', 'Auth\AuthController');
-Route::controller('/password', 'Auth\PasswordController');
+//Route::controller('/auth', 'Auth\AuthController');
+//Route::controller('/password', 'Auth\PasswordController');
 
 /**
  * protected routes

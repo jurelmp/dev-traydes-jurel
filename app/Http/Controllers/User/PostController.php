@@ -2,9 +2,12 @@
 
 namespace Traydes\Http\Controllers\User;
 
+use Traydes\Category;
+
 use Illuminate\Http\Request;
 use Traydes\Http\Requests;
 use Traydes\Http\Controllers\Controller;
+use Traydes\Post;
 
 class PostController extends Controller
 {
@@ -13,9 +16,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($cat_id)
     {
-        //
+        $parent = Category::find($cat_id)->parentCategory()->get();
+        $current = Category::find($cat_id);
+        $categories = Category::find($cat_id)->subCategories()->get();
+        $posts = Category::find($cat_id)->posts()->get();
+        return view('user.posts.index', ['posts' => $posts, 'categories' => $categories, 'parent' => $parent, 'current' => $current->toArray()]);
     }
 
     /**
@@ -45,9 +52,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($cat_id, $id)
     {
-        //
+        $post = Post::find($id);
+        return view('user.posts.show', ['post' => $post]);
     }
 
     /**

@@ -51,7 +51,7 @@ class Category extends Model
      */
     public function subCategories()
     {
-        return $this->hasMany('App\Category', 'parent_id', 'id');
+        return $this->hasMany('Traydes\Category', 'parent_id', 'id');
     }
 
     /**
@@ -61,6 +61,6 @@ class Category extends Model
      */
     public function parentCategory()
     {
-        return $this->hasOne('App\Category', 'id', 'parent_id');
+        return $this->belongsTo('Traydes\Category', 'parent_id', 'id');
     }
 }

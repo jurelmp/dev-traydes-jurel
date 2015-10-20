@@ -12,7 +12,7 @@
 */
 
 /**
- * Create random users
+ * Create random users for testing
  */
 $factory->define(Traydes\User::class, function (Faker\Generator $faker) {
     return [
@@ -24,9 +24,26 @@ $factory->define(Traydes\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+/**
+ * Create random categories for testing
+ */
 $factory->define(Traydes\Category::class, function (Faker\Generator $faker) {
     return [
+        'parent_id' => mt_rand(null, 5),
         'name' => $faker->words(3, true),
         'description' => $faker->words(5, true),
+    ];
+});
+
+/**
+ * Create random posts to be assigned in category for testing
+ */
+$factory->define(Traydes\Post::class, function (Faker\Generator $faker) {
+    return [
+        'category_id' => mt_rand(1, 40),
+        'user_id' => mt_rand(1, 10),
+        'title' => $faker->words(4, true),
+        'content' => join("\n\n", $faker->paragraphs(mt_rand(6, 20))),
+        'published_at' => $faker->dateTimeBetween('-1 month', '+3 days'),
     ];
 });

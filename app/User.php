@@ -45,4 +45,13 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasOne('Traydes\UserProfile');
     }
+
+    /**
+     * get all the posts created
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts()
+    {
+        return $this->hasMany('Traydes\Post');
+    }
 }
