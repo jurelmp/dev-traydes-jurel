@@ -40,10 +40,20 @@ $factory->define(Traydes\Category::class, function (Faker\Generator $faker) {
  */
 $factory->define(Traydes\Post::class, function (Faker\Generator $faker) {
     return [
-        'category_id' => mt_rand(1, 40),
+        'category_id' => mt_rand(1, 50),
         'user_id' => mt_rand(1, 10),
         'title' => $faker->words(4, true),
         'content' => join("\n\n", $faker->paragraphs(mt_rand(6, 20))),
         'published_at' => $faker->dateTimeBetween('-1 month', '+3 days'),
+    ];
+});
+
+/**
+ * Create random images and path for the posts
+ */
+$factory->define(Traydes\PostImage::class, function (Faker\Generator $faker) {
+    return [
+        'post_id' => $faker->randomElement(Traydes\Post::all()->lists('id')->toArray()),
+        'image_path' => $faker->imageUrl($width = 640, $height = 480, 'cats', true),
     ];
 });

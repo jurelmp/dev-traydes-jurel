@@ -44,4 +44,13 @@ class Post extends Model
     {
         return $this->belongsTo('Traydes\User');
     }
+
+    /**
+     * get all the images associated
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany('Traydes\PostImage');
+    }
 }
