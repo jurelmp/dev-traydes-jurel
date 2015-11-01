@@ -13,17 +13,12 @@
 
                         {!! Form::open(array('url' => '/auth/register', 'class' => 'form-horizontal', 'role' => 'form')) !!}
                         <div class="form-group">
-                            <label class="col-md-4 control-label">First Name</label>
+                            <label class="col-md-4 control-label">Username</label>
                             <div class="col-md-6">
-                                {!! Form::text('first_name', null, array('placeholder' => 'First Name', 'class' => 'form-control', 'autofocus')) !!}
+                                {!! Form::text('username', null, array('placeholder' => 'Username', 'class' => 'form-control', 'autofocus')) !!}
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Last Name</label>
-                            <div class="col-md-6">
-                                {!! Form::text('last_name', null, array('placeholder' => 'Last Name', 'class' => 'form-control')) !!}
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <label class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">

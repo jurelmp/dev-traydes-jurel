@@ -16,8 +16,7 @@
  */
 $factory->define(Traydes\User::class, function (Faker\Generator $faker) {
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'username' => $faker->userName,
         'email' => $faker->email,
         'password' => bcrypt('secret'),
         'remember_token' => str_random(10),

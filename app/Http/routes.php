@@ -38,6 +38,8 @@ Route::resource('/categories.posts', 'User\PostController');
 Route::controller('/auth', 'Auth\AuthController');
 Route::controller('/password', 'Auth\PasswordController');
 
+Route::controller('t', 'IndexController');
+
 /**
  * protected routes
  */

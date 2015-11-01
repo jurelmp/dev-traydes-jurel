@@ -16,6 +16,8 @@ class CreateUserProfileTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->text('address')->nullable();
             $table->string('contact_no', 15)->nullable();
             $table->timestamps();

@@ -21,6 +21,20 @@
 
                             {!! Form::open(array('url' => '/user/profile', 'class' => 'form-horizontal', 'role' => 'form')) !!}
                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">First Name</label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('first_name', $profile->first_name, array('class' => 'form-control', 'placeholder' => 'First Name')) !!}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Last Name</label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('last_name', $profile->last_name, array('class' => 'form-control', 'placeholder' => 'Last Name')) !!}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="col-md-4 control-label">Address</label>
                                     <div class="col-md-6">
                                         {!! Form::textarea('address', $profile->address, array('class' => 'form-control', 'rows' => '3', 'placeholder' => 'Address')) !!}

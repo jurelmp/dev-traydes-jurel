@@ -20,12 +20,19 @@
 
                             {!! Form::open(array('url' => '/user/account-settings', 'class' => 'form-horizontal', 'role' => 'form')) !!}
                                 <div class="form-group">
+                                    <label class="col-md-4 control-label">User Name</label>
+                                    <div class="col-md-6">
+                                        {!! Form::text('username', $user->username, array('placeholder' => 'User Name', 'class' => 'form-control', 'disabled')) !!}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="col-md-4 control-label">E-Mail Address</label>
                                     <div class="col-md-6">
                                         {!! Form::text('email', $user->email, array('placeholder' => 'E-Mail Address', 'class' => 'form-control', 'disabled')) !!}
                                     </div>
                                 </div>
-
+                                <hr>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label">Current Password</label>
                                     <div class="col-md-6">

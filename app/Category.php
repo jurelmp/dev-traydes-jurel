@@ -63,4 +63,16 @@ class Category extends Model
     {
         return $this->belongsTo('Traydes\Category', 'parent_id', 'id');
     }
+
+    /**
+     * check if the category is root or not
+     * @return bool
+     */
+    public function isRoot()
+    {
+        if ($this->parent_id == 0) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -64,8 +64,6 @@ class UserController extends Controller
 
         if(empty($profile)) {
             $p = new UserProfile();
-            $p->address = '';
-            $p->contact_no = '';
             Auth::user()->userProfile()->save($p);
             $profile = $p;
         }
@@ -95,6 +93,8 @@ class UserController extends Controller
 //        }
 
         $profile = UserProfile::where('user_id', '=', Auth::user()->id)->first();
+        $profile->first_name = $request->get('first_name');
+        $profile->last_name = $request->get('last_name');
         $profile->address = $request->get('address');
         $profile->contact_no = $request->get('contact_no');
         $profile->save();
