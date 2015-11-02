@@ -28,9 +28,12 @@
                             </div>
 
                             <div class="panel-body">
+
                                 <p>
                                     {{ str_limit($post->content, config('traydes.string_limit')) }}
                                 </p>
+
+
                             </div>
 
                             <div class="panel-footer">
