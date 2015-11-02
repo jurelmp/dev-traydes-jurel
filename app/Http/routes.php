@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function() {
-    return redirect('categories');
+    return redirect('t');
 });
 
 Route::get('/login', function() {
