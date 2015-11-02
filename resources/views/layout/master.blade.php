@@ -56,6 +56,7 @@
     @yield('content')
 
     <script src="{{ asset('assets/js/traydes.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
 
     {{--add-ons scripts--}}
     @yield('scripts')

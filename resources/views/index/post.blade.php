@@ -5,24 +5,33 @@
         <div class="row">
             @if(!empty($post))
 
+                @include('index.partials._modal')
+
                 <div class="col-md-9">
 
                     <div class="well">
-                        <div class="row">
-                            <h2>{{ $post->title }}</h2>
-                            <hr>
 
-                            @if(!empty($post->images()))
+                        <h2>{{ $post->title }}</h2>
+                        <hr>
+
+                        @if(!empty($post->images()))
+                            <div class="row">
                                 @foreach($post->images as $image)
-                                    <img src="{{ $image->image_path }}" alt="" class="img-thumbnail" width="70" height="70">
-                                @endforeach
-                            @endif
 
-                            <hr>
-                            <p>
-                                {!! nl2br(e($post->content)) !!}
-                            </p>
-                        </div>
+                                    <div class="col-md-1">
+                                        <a href="#" title="TEST">
+                                            <img src="{{ $image->image_path }}" alt="" class="img-responsive img-thumbnail">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        <hr>
+                        <p>
+                            {!! nl2br(e($post->content)) !!}
+                        </p>
+
                     </div>
 
                 </div>
