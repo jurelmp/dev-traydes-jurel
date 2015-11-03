@@ -103,4 +103,11 @@ class UserController extends Controller
             ->withSuccess('Changes Saved!');
     }
 
+
+    public function getMyPosts(Request $request)
+    {
+        $posts = Auth::user()->posts;
+        return view('user.myposts', ['posts' => $posts]);
+    }
+
 }

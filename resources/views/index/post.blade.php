@@ -14,7 +14,7 @@
                         <h2>{{ $post->title }}</h2>
                         <hr>
 
-                        @if(!empty($post->images()))
+                        @if(count($post->images->toArray()) > 0)
                             <div class="row">
                                 @foreach($post->images as $image)
 
@@ -25,9 +25,10 @@
                                     </div>
                                 @endforeach
                             </div>
+                            <hr>
                         @endif
 
-                        <hr>
+
                         <p>
                             {!! nl2br(e($post->content)) !!}
                         </p>

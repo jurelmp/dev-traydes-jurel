@@ -31,6 +31,7 @@ class IndexController extends Controller
     public function getView($category_id)
     {
         $cat = Category::find($category_id);
+        $child = Category::where('parent_id', $category_id)->get();
         $posts = null;
 
         if (count($cat->subCategories->toArray()) > 0) {
@@ -41,7 +42,7 @@ class IndexController extends Controller
             //$posts = $cat->posts;
             $posts = Post::where('category_id', $category_id)->orderBy('published_at', 'desc')->paginate(config('traydes.posts_per_page'));
         }
-        return view('index.view', ['posts' => $posts]);
+        return view('index.view', ['posts' => $posts, 'child' => $child]);
     }
 
     /**
