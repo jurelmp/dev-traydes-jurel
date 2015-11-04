@@ -30,7 +30,7 @@
                     <td>
                         {!! Form::open(array('url' => 'user/remove-post')) !!}
                             <input type="hidden" name="id" value="{{ $post->id }}">
-                            <button type="submit" title="Restore this post."><i class="fa fa-trash-o"></i></button>
+                            <button type="submit" title="Remove this post."><i class="fa fa-trash-o"></i></button>
                         {!! Form::close() !!}
                         {{--<a href="#" title="Delete this post."><i class="fa fa-trash-o"></i></a>--}}
                     </td>

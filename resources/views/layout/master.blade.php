@@ -68,7 +68,7 @@
     <div class="container">
         <div class="row">
             <div class="jumbotron">
-                &nbsp;
+
             </div>
 
         </div>

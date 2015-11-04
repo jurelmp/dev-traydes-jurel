@@ -57,10 +57,20 @@ class IndexController extends Controller
         return view('index.post', ['post' => $post]);
     }
 
-
+    /**
+     * search all posts base on the request value
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function getSearch(Request $request)
     {
-        $posts = Post::where('title', $request->get('t'))->paginate(config('traydes.posts_per_page'));
-        return view('index.view', ['posts' => $posts, 'value' => $request->get('t')]);
+        $value = $request->get('t');
+        $posts = Post::where('title', 'LIKE', '%' . $value . '%')
+                        ->orWhere('id', $value)
+                        ->orWhere('content', 'LIKE', '%' . $value . '%')->paginate(config('traydes.posts_per_page'));
+        $count = $posts->total();
+
+        return view('index.view', ['posts' => $posts, 'value' => $value, 'count' => $count]);
     }
 }

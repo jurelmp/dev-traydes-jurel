@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-9">
 
-                <div class="row">
+
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <legend>Account</legend>
@@ -63,7 +63,7 @@
 
                         </div>
                     </div>
-                </div>
+
 
             </div>
         </div>

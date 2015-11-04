@@ -10,6 +10,9 @@
 
             <div class="col-md-9">
 
+                @if(Request::is('t/search*'))
+                    <div class="well well-sm"><em>{{ $count > 1? $count.' records' :  $count.' record' }} found!</em></div>
+                @endif
 
                 @if(count($posts) > 0)
 
@@ -39,11 +42,17 @@
                     @endforeach
 
 
-                    {!! $posts->render() !!}
+                    @if(Request::is('t/search*'))
+                        {!! $posts->appends(['t' => $value])->render() !!}
+                    @else
+                        {!! $posts->render() !!}
+                    @endif
 
                 @else
 
-                    <h4>Your search [ {{ $value }} ] did not match any posts.</h4>
+                    @if(Request::is('t/search*'))
+                        <h4>Your search [ {{ $value }} ] did not match in any posts.</h4>
+                    @endif
 
                 @endif
 
