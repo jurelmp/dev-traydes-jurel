@@ -56,4 +56,11 @@ class IndexController extends Controller
         $post = Post::where('slug', $slug)->first();
         return view('index.post', ['post' => $post]);
     }
+
+
+    public function getSearch(Request $request)
+    {
+        $posts = Post::where('title', $request->get('t'))->paginate(config('traydes.posts_per_page'));
+        return view('index.view', ['posts' => $posts, 'value' => $request->get('t')]);
+    }
 }

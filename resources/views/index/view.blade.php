@@ -11,7 +11,7 @@
             <div class="col-md-9">
 
 
-                @if(!empty($posts))
+                @if(count($posts) > 0)
 
                     @foreach($posts as $post)
                         {{--<li>{{ $post->title }} - {{ $post->published_at->diffForHumans() }}</li>--}}
@@ -40,6 +40,10 @@
 
 
                     {!! $posts->render() !!}
+
+                @else
+
+                    <h4>Your search [ {{ $value }} ] did not match any posts.</h4>
 
                 @endif
 

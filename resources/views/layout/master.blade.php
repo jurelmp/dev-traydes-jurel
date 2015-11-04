@@ -41,6 +41,8 @@
                                 <i class="fa fa-user"></i>&nbsp;<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a href="#">Admin Dashboard</a></li>
+                                <li class="divider"></li>
                                 <li><a href="{{ url('user/my-posts') }}">My Posts</a></li>
                                 <li><a href="{{ url('user/account-settings') }}">Settings</a></li>
                                 <li><a href="{{ url('user/profile') }}">Profile</a></li>
@@ -61,6 +63,16 @@
             </div>
         </div>
     </nav>
+
+    {{--advertisements will be place here--}}
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron">
+                &nbsp;
+            </div>
+
+        </div>
+    </div>
 
     {{--main content--}}
     @yield('content')

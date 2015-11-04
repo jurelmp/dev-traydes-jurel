@@ -2,6 +2,7 @@
 
 namespace Traydes\Http\Controllers\User;
 
+use Traydes\Post;
 use Traydes\User;
 use Traydes\UserProfile;
 
@@ -104,10 +105,57 @@ class UserController extends Controller
     }
 
 
+    /**
+     * get all the posts of a user base on the status
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function getMyPosts(Request $request)
     {
+        $template = ['user.posts_status._active', 'user.posts_status._trashed'];
+        $req = $request->get('status');
+        $posts = null;
+        $index = 0;
+
+        if ($req === "active") {
+
+        } elseif ($req === "trashed") {
+            $posts = Post::onlyTrashed()->where('user_id', Auth::user()->id)->get();
+            $index = 1;
+            return view('user.myposts', ['posts' => $posts, 'template' => $template[$index]]);
+        }
+
         $posts = Auth::user()->posts;
-        return view('user.myposts', ['posts' => $posts]);
+        return view('user.myposts', ['posts' => $posts, 'template' => $template[$index]]);
+    }
+
+    /**
+     * restore a specific post
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postRestorePost(Request $request)
+    {
+        $post = Post::withTrashed()->find($request->get('id'));
+        $post->restore();
+        return redirect('user/my-posts?status=trashed')
+            ->with('success', 'Post Successfully Restored.');
+    }
+
+    /**
+     * delete a specific post
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postRemovePost(Request $request)
+    {
+        $post = Post::find($request->get('id'));
+        $post->delete();
+        return redirect('user/my-posts')
+            ->with('success', 'Post Successfully Deleted');
     }
 
 }

@@ -14,10 +14,12 @@
                     <div class="panel panel-default">
                         {{--<div class="panel-heading"></div>--}}
                         <div class="panel-body">
-                            <legend>Profile</legend>
+                            <legend>Profile <span style="font-size: 11px">[Last Updated: {{ $profile->updated_at->diffForHumans() }}]</span></legend>
 
                             @include('partials.errors')
                             @include('partials.success')
+
+
 
                             {!! Form::open(array('url' => '/user/profile', 'class' => 'form-horizontal', 'role' => 'form')) !!}
                                 <div class="form-group">

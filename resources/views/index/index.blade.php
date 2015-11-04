@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+
+        @include('partials.search')
+
         @if(!empty($categories))
             <div class="row">
 
