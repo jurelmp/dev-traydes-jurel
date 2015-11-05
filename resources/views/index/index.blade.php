@@ -3,7 +3,13 @@
 @section('content')
     <div class="container">
 
-        @include('partials.search')
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                @include('partials.errors')
+                @include('partials.search')
+            </div>
+        </div>
+        <br>
 
         @if(!empty($categories))
             <div class="row">

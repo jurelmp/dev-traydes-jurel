@@ -15,11 +15,11 @@ Route::get('/', function() {
     return redirect('t');
 });
 
-Route::get('/login', function() {
+Route::get('login', function() {
     return redirect('auth/login');
 });
 
-Route::get('/register', function() {
+Route::get('register', function() {
     return redirect('auth/register');
 });
 
@@ -28,15 +28,15 @@ Route::get('/register', function() {
 /**
  * resource controller for user category/post
  */
-Route::resource('/categories', 'User\CategoryController');
-Route::resource('/categories.posts', 'User\PostController');
+Route::resource('categories', 'User\CategoryController');
+Route::resource('categories.posts', 'User\PostController');
 
 /**
  * logging in and out
  * password reset/reminders
  */
-Route::controller('/auth', 'Auth\AuthController');
-Route::controller('/password', 'Auth\PasswordController');
+Route::controller('auth', 'Auth\AuthController');
+Route::controller('password', 'Auth\PasswordController');
 
 Route::controller('t', 'IndexController');
 
@@ -47,12 +47,17 @@ Route::group(['middleware' => 'auth'], function() {
     /**
      * user route
      */
-    Route::controller('/user', 'User\UserController');
+    Route::controller('user', 'User\UserController');
+
+    /**
+     * admin routes
+     */
+    Route::controller('admin', 'AdminController');
 
     /**
      * home route
      */
-    Route::get('/home', function () {
+    Route::get('home', function () {
         return view('welcome');
     });
 });

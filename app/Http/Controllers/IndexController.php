@@ -5,6 +5,7 @@ namespace Traydes\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Traydes\Category;
 use Traydes\Post;
+use Traydes\Http\Requests\Index\SearchRequest;
 
 use Illuminate\Http\Request;
 use Traydes\Http\Requests;
@@ -63,7 +64,7 @@ class IndexController extends Controller
      * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function getSearch(Request $request)
+    public function getSearch(SearchRequest $request)
     {
         $value = $request->get('t');
         $posts = Post::where('title', 'LIKE', '%' . $value . '%')

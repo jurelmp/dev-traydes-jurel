@@ -1,3 +1,7 @@
+<div class="well well-sm">
+    @include('partials.search')
+</div>
+
 <div class="list-group">
 
     <?php $categories = \Traydes\Category::where('parent_id', 0)->get(); ?>

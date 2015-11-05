@@ -11,7 +11,7 @@
             <div class="col-md-9">
 
                 @if(Request::is('t/search*'))
-                    <div class="well well-sm"><em>{{ $count > 1? $count.' records' :  $count.' record' }} found!</em></div>
+                    <div class="well well-sm"><em>{{ $count > 1? $count.' records' :  $count.' record' }} found for <strong>{{ $value }}</strong>!</em></div>
                 @endif
 
                 @if(count($posts) > 0)
@@ -46,12 +46,6 @@
                         {!! $posts->appends(['t' => $value])->render() !!}
                     @else
                         {!! $posts->render() !!}
-                    @endif
-
-                @else
-
-                    @if(Request::is('t/search*'))
-                        <h4>Your search [ {{ $value }} ] did not match in any posts.</h4>
                     @endif
 
                 @endif
