@@ -2,9 +2,13 @@
 
 namespace Traydes\Http\Controllers\User;
 
+use Carbon\Carbon;
+use Traydes\Category;
 use Traydes\Post;
 use Traydes\User;
 use Traydes\UserProfile;
+
+use Traydes\Http\Requests\PostRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -156,6 +160,62 @@ class UserController extends Controller
         $post->delete();
         return redirect('user/my-posts')
             ->with('success', 'Post Successfully Deleted');
+    }
+
+    /**
+     * displaying the form for new posting
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
+    public function getNew(Request $request)
+    {
+        $req = $request->get('c');
+        $categories = null;
+        $template = ['user.posts.templates.index', 'user.posts.templates.form'];
+        $index = 0;
+
+
+
+        if ($req != null) {
+            $category = Category::find($req);
+
+//            dd($category->subCategories->count());
+
+            if (count($category) > 0) {
+                //not empty
+                $categories = Category::where('parent_id', '=', $req)->get();
+            }
+
+            if ($category->subCategories->count() > 0) {
+                $index = 0;
+            } else {
+                $index = 1;
+            }
+            return view('user.posts.create', ['categories' => $categories, 'category_id' => (int)$req, 'template' => $template[$index]]);
+        }
+
+        $categories = Category::where('parent_id', '=', 0)->get();
+        return view('user.posts.create', ['categories' => $categories, 'template' => $template[$index]]);
+    }
+
+    /**
+     * save a new post
+     *
+     * @param PostRequest $request
+     * @return mixed
+     */
+    public function postSavePost(PostRequest $request)
+    {
+        $new_post = new Post();
+        $new_post->category_id = $request->input('cat_id');
+        $new_post->title = $request->input('title');
+        $new_post->content = $request->input('content');
+        $new_post->published_at = Carbon::now();
+
+        Auth::user()->posts()->save($new_post);
+
+        return redirect('t/post/'.$new_post->slug)->withSuccess('Posted Successfully');
     }
 
 }

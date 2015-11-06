@@ -67,9 +67,16 @@ class IndexController extends Controller
     public function getSearch(SearchRequest $request)
     {
         $value = $request->get('t');
-        $posts = Post::where('title', 'LIKE', '%' . $value . '%')
+        /*$posts = Post::where('title', 'LIKE', '%' . $value . '%')
                         ->orWhere('id', $value)
-                        ->orWhere('content', 'LIKE', '%' . $value . '%')->paginate(config('traydes.posts_per_page'));
+                        ->orWhere('content', 'LIKE', '%' . $value . '%')
+                        ->whereNull('deleted_at')->paginate(config('traydes.posts_per_page'));*/
+
+        $posts = Post::where(function($query) use ($value) {
+            $query->orWhere('id', $value);
+            $query->orWhere('content', 'LIKE', '%' . $value . '%');
+        })->whereNull('deleted_at')->paginate(config('traydes.posts_per_page'));
+
         $count = $posts->total();
 
         return view('index.view', ['posts' => $posts, 'value' => $value, 'count' => $count]);

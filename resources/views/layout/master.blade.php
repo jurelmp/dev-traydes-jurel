@@ -37,7 +37,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         <li>
-                            <a href="#">New</a>
+                            <a href="{{ url('user/new') }}">New</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

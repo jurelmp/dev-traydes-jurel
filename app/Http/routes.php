@@ -62,15 +62,6 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
-/**
- * admin routes
- */
-//Route::group(['prefix' => 'admin'], function() {
-//    Route::controller('u', 'Admin\AdminController');
-//    Route::resource('categories', 'Admin\CategoryController');
-//    Route::controller('colleges', 'Admin\CollegeController');
-//    Route::controller('users', 'Admin\UserController');
-//});
 
 /**
  * sub domain routing for areas

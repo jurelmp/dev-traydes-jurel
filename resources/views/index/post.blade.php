@@ -10,6 +10,7 @@
                 <div class="col-md-9">
 
                     <div class="well">
+                        @include('partials.success')
 
                         <h2>{{ $post->title }}</h2>
                         <hr>
@@ -65,6 +66,10 @@
 
                 </div>
 
+            @else
+                <div class="well">
+                    <legend>Post not found.</legend>
+                </div>
             @endif
 
         </div>
