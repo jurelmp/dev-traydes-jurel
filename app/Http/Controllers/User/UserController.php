@@ -5,8 +5,11 @@ namespace Traydes\Http\Controllers\User;
 use Carbon\Carbon;
 use Traydes\Category;
 use Traydes\Post;
+use Traydes\PostImage;
 use Traydes\User;
 use Traydes\UserProfile;
+
+use Image;
 
 use Traydes\Http\Requests\PostRequest;
 
@@ -175,8 +178,6 @@ class UserController extends Controller
         $template = ['user.posts.templates.index', 'user.posts.templates.form'];
         $index = 0;
 
-
-
         if ($req != null) {
             $category = Category::find($req);
 
@@ -207,13 +208,28 @@ class UserController extends Controller
      */
     public function postSavePost(PostRequest $request)
     {
+        $destinationPath = public_path() . '/uploads/';
+
         $new_post = new Post();
         $new_post->category_id = $request->input('cat_id');
         $new_post->title = $request->input('title');
         $new_post->content = $request->input('content');
         $new_post->published_at = Carbon::now();
-
         Auth::user()->posts()->save($new_post);
+
+        $images = $request->file('images');
+        /*dd($images);*/
+
+        if ($images != null) {
+            foreach ($images as $image) {
+                $filename = time() . '-' . str_random(16) . '.' . $image->getClientOriginalExtension();
+                $fullName = $destinationPath . $filename;
+                Image::make($image->getRealPath())->resize(640, 480)->save($fullName);
+                $img = new PostImage();
+                $img->image_path = asset( 'uploads/' . $filename);
+                $new_post->images()->save($img);
+            }
+        }
 
         return redirect('t/post/'.$new_post->slug)->withSuccess('Posted Successfully');
     }

@@ -60,8 +60,7 @@ elixir(function(mix) {
         'js/jquery.js',
         'js/bootstrap.js',
         'js/jquery.dataTables.js',
-        'js/dataTables.bootstrap.js',
-        'js/dropzone.js'
+        'js/dataTables.bootstrap.js'
     ],
         'public/assets/js/traydes.js',
         'resources/assets'
@@ -70,6 +69,6 @@ elixir(function(mix) {
     /**
      * compile less
      */
-    mix.less('admin.less', 'public/assets/css/traydes.css')
+    mix.less(['admin.less'], 'public/assets/css/traydes.css');
 
 });

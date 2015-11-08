@@ -26,8 +26,9 @@ class PostRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:255|unique:posts',
-            'content' => 'required|min:5',
+//            'images' => 'mimes:jpeg,bmp,png',
+            /*'title' => 'required|min:5|max:255|unique:posts',
+            'content' => 'required|min:5',*/
         ];
     }
 }

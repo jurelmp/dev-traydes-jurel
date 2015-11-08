@@ -3,11 +3,22 @@
 @include('partials.errors')
 @include('partials.success')
 
-{!! Form::open(array('url' => 'user/save-post', 'class' => 'form-horizontal', 'role' => 'form', 'files' => 'true')) !!}
+
+
+{!! Form::open(array('url' => 'user/save-post', 'class' => 'form-horizontal dropzone', 'role' => 'form', 'files' => 'true', 'drop-zone' => '')) !!}
 
     {!! Form::hidden('cat_id', $category_id) !!}
 
-    {!! Form::file('images[]', array('multiple' => true)) !!}
+
+
+    <div class="form-group">
+        <label class="col-md-4 control-label">Images</label>
+        <div class="col-md-6">
+            {!! Form::file('images[]', array('multiple' => true)) !!}
+        </div>
+    </div>
+
+
     <hr>
 
     <div class="form-group">
