@@ -3,9 +3,12 @@
 @include('partials.errors')
 @include('partials.success')
 
-{!! Form::open(array('url' => 'user/save-post', 'class' => 'form-horizontal', 'role' => 'form')) !!}
+{!! Form::open(array('url' => 'user/save-post', 'class' => 'form-horizontal', 'role' => 'form', 'files' => 'true')) !!}
 
     {!! Form::hidden('cat_id', $category_id) !!}
+
+    {!! Form::file('images[]', array('multiple' => true)) !!}
+    <hr>
 
     <div class="form-group">
         <label class="col-md-4 control-label">Title</label>
