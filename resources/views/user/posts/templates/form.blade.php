@@ -14,7 +14,7 @@
     <div class="form-group">
         <label class="col-md-4 control-label">Images</label>
         <div class="col-md-6">
-            {!! Form::file('images[]', array('multiple' => true)) !!}
+            {!! Form::file('images[]', array('multiple' => true, 'accept' => 'image/*')) !!}
         </div>
     </div>
 

@@ -1,21 +1,36 @@
-//$(document).ready(function () {
+$(document).ready(function () {
 
     /* copy loaded thumbnails into carousel */
-    $('.row .img-thumbnail').on('load', function() {
+    //$('.row .thumbnail').on('load', function() {
+    //
+    //}).each(function(i) {
+    //    if(!this.complete) {
+    //        var item = $('<div class="item"></div>');
+    //        var itemDiv = $(this).parents('div');
+    //        var title = $(this).parent('a').attr("title");
+    //
+    //        item.attr("title",title);
+    //        $(itemDiv.html()).appendTo(item);
+    //        item.appendTo('.carousel-inner');
+    //
+    //        if (i==0){ // set first item active
+    //            item.addClass('active');
+    //        }
+    //    }
+    //});
 
-    }).each(function(i) {
-        if(!this.complete) {
-            var item = $('<div class="item"></div>');
-            var itemDiv = $(this).parents('div');
-            var title = $(this).parent('a').attr("title");
+    $('.row .thumbnail').each(function(i){
 
-            item.attr("title",title);
-            $(itemDiv.html()).appendTo(item);
-            item.appendTo('.carousel-inner');
+        var item = $('<div class="item"></div>');
+        var itemDiv = $(this).parents('div');
+        var title = $(this).parent('a').attr("title");
 
-            if (i==0){ // set first item active
-                item.addClass('active');
-            }
+        item.attr("title",title);
+        $(itemDiv.html()).appendTo(item);
+        item.appendTo('.carousel-inner');
+
+        if (i==0){ // set first item active
+            item.addClass('active');
         }
     });
 
@@ -28,7 +43,7 @@
     });
 
     /* when clicking a thumbnail */
-    $('.row .img-thumbnail').click(function(){
+    $('.row .thumbnail').click(function(){
         var idx = $(this).parents('div').index();
         var id = parseInt(idx);
         $('#myModal').modal('show'); // show the modal
@@ -36,4 +51,4 @@
 
     });
 
-//});
+});

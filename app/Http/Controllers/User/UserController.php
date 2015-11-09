@@ -208,7 +208,7 @@ class UserController extends Controller
      */
     public function postSavePost(PostRequest $request)
     {
-        $destinationPath = public_path() . '/uploads/';
+        $destinationPath = '/uploads/';
 
         $new_post = new Post();
         $new_post->category_id = $request->input('cat_id');
@@ -218,15 +218,24 @@ class UserController extends Controller
         Auth::user()->posts()->save($new_post);
 
         $images = $request->file('images');
-        /*dd($images);*/
 
         if ($images != null) {
             foreach ($images as $image) {
+                $canvas = Image::canvas(640, 640, '#ffffff');
+
                 $filename = time() . '-' . str_random(16) . '.' . $image->getClientOriginalExtension();
                 $fullName = $destinationPath . $filename;
-                Image::make($image->getRealPath())->resize(640, 480)->save($fullName);
+
+                $new_image = Image::make($image->getRealPath())->resize(640, 640, function($constraint) {
+                    $constraint->aspectRatio();
+                });
+
+                $path = public_path() . $destinationPath . $filename;
+                $canvas->insert($new_image, 'center');
+                $canvas->save($path);
                 $img = new PostImage();
-                $img->image_path = asset( 'uploads/' . $filename);
+                $img->image_path = $fullName;
+                $img->image_name = $image->getClientOriginalName();
                 $new_post->images()->save($img);
             }
         }

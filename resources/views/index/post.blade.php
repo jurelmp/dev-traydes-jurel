@@ -20,8 +20,8 @@
                                 @foreach($post->images as $image)
 
                                     <div class="col-md-1">
-                                        <a href="#" title="TEST">
-                                            <img src="{{ $image->image_path }}" alt="" class="img-responsive img-thumbnail">
+                                        <a href="#" title="{{ $image->image_name }}">
+                                            <img src="{{ url($image->image_path) }}" alt="" class="img-responsive thumbnail">
                                         </a>
                                     </div>
                                 @endforeach
