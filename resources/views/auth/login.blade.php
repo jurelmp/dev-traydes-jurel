@@ -24,7 +24,7 @@
                                 {!! Form::password('password', array('placeholder' => 'Password', 'class' => 'form-control')) !!}
                             </div>
                         </div>
-                        {{--<div class="form-group">
+                        <div class="form-group">
                             <div class="col-md-4 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
@@ -32,15 +32,16 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>--}}
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ url('password/email') }}">Forgot Password ?</a>
-                            </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {!! Form::submit('Sign Me In', array('class' => 'btn btn-success')) !!}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="{{ url('password/email') }}">Forgot Password ?</a>
                             </div>
                         </div>
                         {!! Form::close() !!}
