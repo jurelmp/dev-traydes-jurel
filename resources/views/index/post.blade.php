@@ -20,7 +20,7 @@
                                 @foreach($post->images as $image)
 
                                     <div class="col-md-1">
-                                        <a href="#" title="{{ $image->image_name }}">
+                                        <a href="#" title="@if($image->image_name == '') &nbsp; @else {{ $image->image_name }} @endif">
                                             <img src="{{ url($image->image_path) }}" alt="" class="img-responsive thumbnail">
                                         </a>
                                     </div>
