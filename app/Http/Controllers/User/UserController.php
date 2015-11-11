@@ -3,6 +3,7 @@
 namespace Traydes\Http\Controllers\User;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 use Traydes\Category;
 use Traydes\Post;
 use Traydes\PostImage;
@@ -219,8 +220,9 @@ class UserController extends Controller
 
         $images = $request->file('images');
 
-        if ($images != null) {
+        if ($images[0] != null) {
             foreach ($images as $image) {
+
                 $canvas = Image::canvas(640, 640, '#ffffff');
 
                 $filename = time() . '-' . str_random(16) . '.' . $image->getClientOriginalExtension();
@@ -229,6 +231,10 @@ class UserController extends Controller
                 $new_image = Image::make($image->getRealPath())->resize(640, 640, function($constraint) {
                     $constraint->aspectRatio();
                 });
+
+                if (!File::exists(public_path() . $destinationPath)) {
+                    $make = File::makeDirectory(public_path() . $destinationPath, 0777, true);
+                }
 
                 $path = public_path() . $destinationPath . $filename;
                 $canvas->insert($new_image, 'center');
@@ -240,7 +246,7 @@ class UserController extends Controller
             }
         }
 
-        return redirect('t/post/'.$new_post->slug)->withSuccess('Posted Successfully');
+        return redirect('t/post/' .  $new_post->slug)->withSuccess('Posted Successfully');
     }
 
 }
