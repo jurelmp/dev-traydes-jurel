@@ -1,9 +1,9 @@
 <div>
     {{--nav tabs--}}
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="col-md-4"><a href="{{ url('user/my-posts?status=active') }}">Active</a></li>
-        <li role="presentation" class="col-md-4"><a href="#">Expired</a></li>
-        <li role="presentation" class="active col-md-4"><a href="{{ url('user/my-posts?status=trashed') }}">Trashed</a></li>
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation"><a href="{{ url('user/my-posts?status=active') }}">Active</a></li>
+        <li role="presentation"><a href="#">Expired</a></li>
+        <li role="presentation" class="active"><a href="{{ url('user/my-posts?status=trashed') }}">Trashed</a></li>
     </ul>
 
     <table class="table table-bordered table-hover">
