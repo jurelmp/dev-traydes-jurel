@@ -12,10 +12,12 @@
 
                 <div class="panel-body">
 
+                    <legend>New Account</legend>
+
                     @include('partials.success')
                     @include('partials.errors')
 
-                    {!! Form::open(array('url' => '/admin/save-user', 'class' => 'form-horizontal', 'role' => 'form')) !!}
+                    {!! Form::open(array('url' => '/admin/user-create', 'class' => 'form-horizontal', 'role' => 'form')) !!}
                     <div class="form-group">
                         <label class="col-md-4 control-label">Username</label>
                         <div class="col-md-6">

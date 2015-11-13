@@ -2,6 +2,7 @@
 
 namespace Traydes\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 use Traydes\Http\Requests\Admin\NewUserRequest;
@@ -42,39 +43,34 @@ class AdminController extends Controller
         return view('admin.users.index', ['users' => $users]);
     }
 
+    public function getUserCreate()
+    {
+        return view('admin.user.create');
+    }
+
+    public function postUserCreate(NewUserRequest $request)
+    {
+        $user = new User();
+        $user->username = $request->get('username');
+        $user->email = $request->get('email');
+        $user->password = Hash::make($request->get('password'));
+        $user->save();
+
+        return redirect('admin/user/' . $user->id)->withSuccess('Account created.');
+    }
+
     /**
      * different admin actions for a user account
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string
      */
-    public function getUser(Request $request)
+    public function getUser($id)
     {
-        $default = array(
-            'id' => '',
-            'username' => '',
-            'email' => '',
-        );
-
-        $action = $request->get('action');
-
-        switch ($action) {
-            case 'create':
-                $user =  (object)$default;
-                return view('admin.user.create', ['user' => $user]);
-                break;
-            case 'edit':
-                return view('admin.user.edit');
-                break;
-            case 'view':
-                return 'view details for the user';
-                break;
-            default:
-                return redirect('admin/users')->withErrors('Action not Found!');
-                break;
-        }
+        $user = User::find($id);
+        return view('admin.user.index', ['user' => $user]);
     }
 
-    public function postSaveUser(Request $request)
+    public function postUser(Request $request)
     {
         return redirect('admin/users')->withSuccess('Account created.');
     }

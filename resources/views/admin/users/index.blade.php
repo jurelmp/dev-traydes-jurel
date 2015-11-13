@@ -20,7 +20,7 @@
                             <option value="">Deleted</option>
                         </select>
 
-                        <a href="{{ url('admin/user?action=create') }}" class="btn btn-info btn-sm">
+                        <a href="{{ url('admin/user-create') }}" class="btn btn-info btn-sm">
                             <i class="fa fa-user-plus"></i>
                             Add
                         </a>
@@ -46,7 +46,7 @@
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>
-                                    <a href="#">{{ $user->username }}</a>
+                                    <a href="{{ url('admin/user/' . $user->id) }}">{{ $user->username }}</a>
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at->diffForHumans() }}</td>
