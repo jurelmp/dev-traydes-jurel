@@ -76,6 +76,12 @@
             var description = $('textarea[name=description]').val();
             var _token = $('input[name=_token]').val();
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': _token,
+                }
+            });
+
             $.ajax({
                method: 'POST',
                 url: '{{ url('admin/category-create') }}',
