@@ -10,15 +10,16 @@ $offset = 3;
 $i = 1;
 ?>
 
-@foreach($categories as $category)
+@if(!empty($categories))
+    {{--<div class="list-group">--}}
+    @foreach($categories as $category)
 
+        {{--<a href="{{ url('user/new?c='.$category->id) }}" class="list-group-item">{{ $category->name }}</a>--}}
 
+        <li><a href="{{ url('user/new?c='.$category->id) }}">{{ $category->name }}</a></li>
 
+        <?php $i++; ?>
 
-    <li><a href="{{ url('user/new?c='.$category->id) }}">{{ $category->name }}</a></li>
-
-
-
-    <?php $i++; ?>
-
-@endforeach
+    @endforeach
+    {{--</div>--}}
+@endif

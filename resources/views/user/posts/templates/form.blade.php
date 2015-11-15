@@ -22,6 +22,13 @@
     <hr>
 
     <div class="form-group">
+        <label class="col-md-4 control-label">Price</label>
+        <div class="col-md-6">
+            {!! Form::text('price', 0, array('placeholder' => 'Price', 'class' => 'form-control')) !!}
+        </div>
+    </div>
+
+    <div class="form-group">
         <label class="col-md-4 control-label">Title</label>
         <div class="col-md-6">
             {!! Form::text('title', null, array('placeholder' => 'Title', 'class' => 'form-control')) !!}

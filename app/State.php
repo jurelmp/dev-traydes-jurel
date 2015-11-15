@@ -5,7 +5,7 @@ namespace Traydes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Area extends Model
+class State extends Model
 {
     use SoftDeletes;
 
@@ -13,15 +13,15 @@ class Area extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    protected $table = 'areas';
+    protected $table = 'states';
 
     /**
      * create a slug wheneever a name of this object is created
      * @param $value
      */
-    public function setNameAttribute($value)
+    public function setStateAttribute($value)
     {
-        $this->attributes['name'] = $value;
+        $this->attributes['state'] = $value;
 
         if(!$this->exists) {
             $this->attributes['slug'] = str_slug($value);

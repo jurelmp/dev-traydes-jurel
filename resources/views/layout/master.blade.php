@@ -30,14 +30,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="{{ url('/') }}" class="navbar-brand">{{ config('traydes.title') }}</a>
+                <a href="{{ url('/') }}" class="navbar-brand" style="font-weight: bold; font-variant: small-caps;">{{ config('traydes.title') }}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                         <li>
-                            <a href="{{ url('user/new') }}">New</a>
+                            <a href="{{ url('user/new') }}"><i class="fa fa-plus"></i>&nbsp;New</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -51,14 +51,14 @@
                                 <li><a href="{{ url('user/profile') }}">Profile</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{ url('auth/logout') }}">Logout</a></li>
+                        <li><a href="{{ url('auth/logout') }}"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
                     @else
                         @if(!Request::is('auth/login'))
-                            <li><a href="{{ url('auth/login') }}">Login</a></li>
+                            <li><a href="{{ url('auth/login') }}"><i class="fa fa-sign-in"></i>&nbsp;Login</a></li>
                         @endif
 
                         @if(!Request::is('auth/register'))
-                            <li><a href="{{ url('auth/register') }}">Create</a></li>
+                            <li><a href="{{ url('auth/register') }}"><i class="fa fa-user"></i>&nbsp;Create</a></li>
                         @endif
                     @endif
 
@@ -79,6 +79,9 @@
 
     {{--main content--}}
     @yield('content')
+
+    {{--footer--}}
+    @include('layout.footer')
 
     <script src="{{ asset('assets/js/traydes.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>

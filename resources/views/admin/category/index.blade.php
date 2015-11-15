@@ -41,7 +41,7 @@
                         <tbody>
                         @foreach($categories as $category)
 
-                            <tr>
+                            <tr id="{{ $category->id }}">
                                 <td>
                                     <a href="{{ url('admin/categories?id=' . $category->id) }}">{{ $category->id }} - {{ $category->name }}</a>
                                 </td>
@@ -49,7 +49,7 @@
                                 <td>{{ $category->totalPosts() }}</td>
                                 <td>{{ $category->created_at }}</td>
                                 <td>
-                                    <i class="fa fa-edit"></i>
+                                    <a href="#" id="{{ $category->id }}" title="Edit {{ $category->name }}"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
 
@@ -60,6 +60,7 @@
                 </table>
 
 
+                @include('admin.partials._modal_update_category')
             </div>
         </div>
     </div>
@@ -68,6 +69,29 @@
 @section('scripts')
     <script>
         $('#table-categories').DataTable();
+
+        var editModal = function() {
+            $('#modal_category_update').modal('show');
+        };
+
+        $('#table-categories tr td:last-child a').click(function() {
+            /*console.log(this.id);*/
+
+            var id = this.id;
+            var lnkpath = "api-category/" + id;
+
+            editModal();
+
+            $.ajax({
+                method: 'GET',
+                url: lnkpath,
+                success: function(data) {
+                    $('#modal_category_update input[name=category_id]').val(data.id);
+                    $('#modal_category_update input[name=name]').val(data.name);
+                    $('#modal_category_update textarea[name=description]').val(data.description);
+                }
+            });
+        });
 
         $('#category_new').submit(function (e) {
             e.preventDefault();

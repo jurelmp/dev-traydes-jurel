@@ -27,6 +27,7 @@ class PostRequest extends Request
     {
         return [
             /*'images' => 'mimes:jpeg,bmp,png',*/
+            'price' => 'required|integer',
             'title' => 'required|min:5|max:255|unique:posts',
             'content' => 'required|min:5',
         ];

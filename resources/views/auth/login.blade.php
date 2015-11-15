@@ -8,8 +8,10 @@
                     <div class="panel-heading">Login</div>
                     <div class="panel-body">
 
-                        @include('auth.partials.errors')
-                        @include('auth.partials.success')
+                        <div class="col-md-10 col-md-offset-1">
+                            @include('auth.partials.errors')
+                            @include('auth.partials.success')
+                        </div>
 
                         {!! Form::open(array('url' => '/auth/login', 'class' => 'form-horizontal', 'role' => 'form')) !!}
                         <div class="form-group">

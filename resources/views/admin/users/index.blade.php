@@ -14,11 +14,11 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <select name="" id="">
+                        {{--<select name="" id="">
                             <option value="">All</option>
                             <option value="">Active</option>
                             <option value="">Deleted</option>
-                        </select>
+                        </select>--}}
 
                         <a href="{{ url('admin/user-create') }}" class="btn btn-info btn-sm">
                             <i class="fa fa-user-plus"></i>

@@ -135,5 +135,34 @@ class AdminController extends Controller
         return 'success';
     }
 
+    /**
+     * update the category object
+     *
+     * @param NewCategoryRequest $request
+     * @return mixed
+     */
+    public function postCategoryUpdate(NewCategoryRequest $request)
+    {
+        $category = Category::find($request->get('category_id'));
+        $category->name = $request->get('name');
+        $category->slug = str_slug($request->get('name'), '-');
+        $category->description = $request->get('description');
+        $category->save();
+
+        return redirect('admin/categories')->withSuccess('Category updated. <b>' . $category->name . '</b>');
+    }
+
+    /**
+     * get the category object in json format
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getApiCategory($id)
+    {
+        $category = Category::find($id);
+        return $category;
+    }
+
 
 }
