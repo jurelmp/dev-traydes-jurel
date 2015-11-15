@@ -9036,3 +9036,6 @@ div.FixedHeader_Cloned table {
 }
 
 /*# sourceMappingURL=traydes.css.map */
+.carousel-control.left, .carousel-control.right {
+  background-image: none !important;
+}

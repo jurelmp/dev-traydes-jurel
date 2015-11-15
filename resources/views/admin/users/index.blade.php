@@ -27,6 +27,7 @@
                     </div>
                 </div>
 
+                <h3>All Users</h3>
 
                 <table id="table-users" class="table table-bordered table-hover">
                     <thead>

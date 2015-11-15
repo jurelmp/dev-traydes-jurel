@@ -76,4 +76,15 @@ class Category extends Model
         return false;
     }
 
+    public function totalPosts()
+    {
+        $subs = $this->subCategories()->get();
+        $total = 0;
+
+        foreach ($subs as $sub) {
+            $total += $sub->posts->count();
+        }
+        return $total;
+    }
+
 }

@@ -19,7 +19,7 @@
                             <div class="row">
                                 @foreach($post->images as $image)
 
-                                    <div class="col-md-1">
+                                    <div class="col-sm-1 col-xs-4">
                                         <a href="#" title="@if($image->image_name == '') &nbsp; @else {{ $image->image_name }} @endif">
                                             <img src="{{ url($image->image_path) }}" alt="" class="img-responsive thumbnail">
                                         </a>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-3">
 
-                    <table class="table">
+                    <table class="table table-bordered">
                         <tbody>
                         <tr>
                             <td>ID</td>
