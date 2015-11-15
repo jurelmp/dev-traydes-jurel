@@ -93,6 +93,13 @@ class AdminController extends Controller
         return view('admin.user.index', ['user' => $user, 'profile' => $profile, 'posts' => (object)$posts]);
     }
 
+    /**
+     * display all the root categories / the request will be the parent id
+     * of the child categories to be displayed
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getCategories(Request $request)
     {
         $req = $request->get('id');
@@ -110,6 +117,12 @@ class AdminController extends Controller
         return view('admin.category.index', ['categories' => $categories, 'current' => $current]);
     }
 
+    /**
+     * create a new category / root / child category
+     *
+     * @param NewCategoryRequest $request
+     * @return string
+     */
     public function postCategoryCreate(NewCategoryRequest $request)
     {
         $category = new Category();

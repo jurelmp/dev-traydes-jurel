@@ -19,4 +19,3 @@
         {!! Form::button('<span class="fa fa-check-square-o"></span> Submit', array('type' => 'submit', 'class' => 'btn btn-success')) !!}
     </div>
 </div>
-
