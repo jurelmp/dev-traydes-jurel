@@ -2,6 +2,8 @@
 
 namespace Traydes\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Traydes\User;
 use Validator;
@@ -69,4 +71,11 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /*public function getLogout()
+    {
+        Auth::logout();
+
+        return redirect($this->redirectAfterLogout)->withSuccess('You logged out,');
+    }*/
 }
