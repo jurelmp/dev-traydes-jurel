@@ -56,3 +56,23 @@ $factory->define(Traydes\PostImage::class, function (Faker\Generator $faker) {
         'image_path' => $faker->imageUrl($width = 640, $height = 480, 'cats', true),
     ];
 });
+
+/**
+ * Create random states
+ */
+$factory->define(Traydes\State::class, function (Faker\Generator $faker) {
+    return [
+        'state' => $faker->state,
+        'state_abbr' => $faker->stateAbbr,
+    ];
+});
+
+/**
+ * Create random cities and assign to a random state
+ */
+$factory->define(Traydes\City::class, function (Faker\Generator $faker) {
+    return [
+        'state_id' => $faker->randomElements(DB::table('states')->lists('id')), //conitnuation
+        'city' => $faker->city,
+    ];
+});

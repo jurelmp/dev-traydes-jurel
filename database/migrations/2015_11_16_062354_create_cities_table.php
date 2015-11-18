@@ -16,6 +16,7 @@ class CreateCitiesTable extends Migration
             $table->increments('id');
             $table->integer('state_id')->unsigned();
             $table->string('city');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

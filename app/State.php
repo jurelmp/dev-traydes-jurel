@@ -36,4 +36,13 @@ class State extends Model
     {
         return $this->hasMany('Traydes\College');
     }
+
+    /**
+     * return cities that belongs to this state
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cities()
+    {
+        return $this->hasMany('Traydes\City');
+    }
 }

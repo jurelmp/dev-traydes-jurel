@@ -164,5 +164,4 @@ class AdminController extends Controller
         return $category;
     }
 
-
 }
