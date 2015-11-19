@@ -63,7 +63,7 @@ class IndexController extends Controller
     /**
      * search all posts base on the request value
      *
-     * @param Request $request
+     * @param SearchRequest $request
      * @return \Illuminate\View\View
      */
     public function getSearch(SearchRequest $request)

@@ -66,7 +66,6 @@ Route::group(['middleware' => 'auth'], function() {
 /**
  * sub domain routing for areas
  */
-
 Route::group(array('domain' => '{subdomain}.localhost:8000'), function()
 {
     get('/t', function($subdomain)
@@ -74,3 +73,4 @@ Route::group(array('domain' => '{subdomain}.localhost:8000'), function()
         return 'success sub domain routing';
     });
 });
+

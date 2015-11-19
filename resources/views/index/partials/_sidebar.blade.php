@@ -145,7 +145,7 @@
 
             @endforeach
 
-            {{--<li>
+            <li>
                 <a href="#" aria-expanded="false">Menu 4 <span class="fa
                  arrow"></span></a>
                 <ul aria-expanded="false" class="collapse">
@@ -161,7 +161,7 @@
                     </li>
 
                 </ul>
-            </li>--}}
+            </li>
 
         </ul>
 
