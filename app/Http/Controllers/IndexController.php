@@ -10,6 +10,7 @@ use Traydes\Http\Requests\Index\SearchRequest;
 use Illuminate\Http\Request;
 use Traydes\Http\Requests;
 use Traydes\Http\Controllers\Controller;
+use Traydes\State;
 
 class IndexController extends Controller
 {
@@ -33,6 +34,7 @@ class IndexController extends Controller
     {
         $cat = Category::find($category_id);
         $child = Category::where('parent_id', $category_id)->get();
+        $states = State::all();
         $posts = null;
 
         if (count($cat->subCategories->toArray()) > 0) {
@@ -43,7 +45,7 @@ class IndexController extends Controller
             //$posts = $cat->posts;
             $posts = Post::where('category_id', $category_id)->orderBy('published_at', 'desc')->paginate(config('traydes.posts_per_page'));
         }
-        return view('index.view', ['posts' => $posts, 'child' => $child]);
+        return view('index.view', ['posts' => $posts, 'child' => $child, 'states' => $states]);
     }
 
     /**
@@ -66,6 +68,7 @@ class IndexController extends Controller
      */
     public function getSearch(SearchRequest $request)
     {
+        $states = State::all();
         $value = $request->get('t');
         /*$posts = Post::where('title', 'LIKE', '%' . $value . '%')
                         ->orWhere('id', $value)
@@ -79,6 +82,6 @@ class IndexController extends Controller
 
         $count = $posts->total();
 
-        return view('index.view', ['posts' => $posts, 'value' => $value, 'count' => $count]);
+        return view('index.view', ['posts' => $posts, 'value' => $value, 'count' => $count, 'states' => $states]);
     }
 }

@@ -15,6 +15,7 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('state_id')->unsigned();
+            $table->string('slug')->unique();
             $table->string('city');
             $table->softDeletes();
             $table->timestamps();

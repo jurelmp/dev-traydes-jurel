@@ -93,36 +93,77 @@
 <div class="panel panel-default">
     <div class="panel-heading">Filter by Area</div>
 
-    <ul class="metismenu" id="menu">
-        <li>
-            <a href="#" aria-expanded="false">Menu 1 <span class="fa arrow"></span></a>
+    @if(!empty($states))
 
-            <ul aria-expanded="false">
-                <li><a href="#">Sub Menu 1</a></li>
-            </ul>
-        </li>
+        <ul class="metismenu" id="menu">
+            {{--<li>
+                <a href="#" aria-expanded="false">Menu 1 <span class="fa arrow"></span></a>
 
-        <li>
-            <a href="#" aria-expanded="false">Menu 2 <span class="fa arrow"></span></a>
-            <ul aria-expanded="false">
-                <li><a href="#">Sub Menu 2</a></li>
-            </ul>
-        </li>
+                <ul aria-expanded="false">
+                    <li><a href="#">Sub Menu 1</a></li>
+                </ul>
+            </li>
 
-        <li>
-            <a href="#" aria-expanded="false">Menu 3 <span class="fa arrow"></span></a>
-            <ul aria-expanded="false">
-                <li><a href="#">Sub Menu 3</a></li>
-            </ul>
-        </li>
+            <li>
+                <a href="#" aria-expanded="false">Menu 2 <span class="fa arrow"></span></a>
+                <ul aria-expanded="false">
+                    <li><a href="#">Sub Menu 2</a></li>
+                </ul>
+            </li>
 
-        <li>
-            <a href="#" aria-expanded="false">Menu 4 <span class="fa arrow"></span></a>
-            <ul aria-expanded="false">
-                <li><a href="#">Sub Menu 4</a></li>
-            </ul>
-        </li>
-    </ul>
+            <li>
+                <a href="#" aria-expanded="false">Menu 3 <span class="fa arrow"></span></a>
+                <ul aria-expanded="false">
+                    <li><a href="#">Sub Menu 3</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" aria-expanded="false">Menu 4 <span class="fa arrow"></span></a>
+                <ul aria-expanded="false">
+                    <li><a href="#">Sub Menu 4</a></li>
+                </ul>
+            </li>--}}
+
+            @foreach($states as $state)
+
+                <li>
+                    <a href="#" aria-expanded="false">{{ $state->state }} <span class="fa arrow"></span></a>
+
+                    @if(!empty($state->cities->toArray()))
+
+                        <ul aria-expanded="false">
+
+                            @foreach($state->cities as $city)
+                                <li><a href="#">{{ $city->city }}</a></li>
+                            @endforeach
+
+                        </ul>
+
+                    @endif
+                </li>
+
+            @endforeach
+
+            {{--<li>
+                <a href="#" aria-expanded="false">Menu 4 <span class="fa
+                 arrow"></span></a>
+                <ul aria-expanded="false" class="collapse">
+                    <li>
+                        <a href="#">Sub Menu 4 <span class="fa arrow"></span></a>
+
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="#">Sub Sub Menu 4</a></li>
+                            <li><a href="#">Sub Sub Menu 4</a></li>
+                            <li><a href="#">Sub Sub Menu 4</a></li>
+                        </ul>
+
+                    </li>
+
+                </ul>
+            </li>--}}
+
+        </ul>
+
+    @endif
 </div>
-
-

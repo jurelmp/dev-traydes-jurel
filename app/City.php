@@ -27,4 +27,17 @@ class City extends Model
     {
         return $this->belongsTo('Traydes\State');
     }
+
+    /**
+     * set the slug
+     * @param $value
+     */
+    public function setCityAttribute($value)
+    {
+        $this->attributes['city'] = $value;
+
+        if (!$this->exists) {
+            $this->attributes['slug'] = str_slug($value);
+        }
+    }
 }

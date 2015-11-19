@@ -72,7 +72,7 @@ $factory->define(Traydes\State::class, function (Faker\Generator $faker) {
  */
 $factory->define(Traydes\City::class, function (Faker\Generator $faker) {
     return [
-        'state_id' => $faker->randomElements(DB::table('states')->lists('id')), //conitnuation
+        'state_id' => mt_rand(1, 5), //conitnuation
         'city' => $faker->city,
     ];
 });
