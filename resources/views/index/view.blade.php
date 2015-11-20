@@ -19,7 +19,7 @@
                     @foreach($posts as $post)
                         {{--<li>{{ $post->title }} - {{ $post->published_at->diffForHumans() }}</li>--}}
 
-                        <div class="panel panel-default">
+                        {{--<div class="panel panel-default">
                             <div class="panel-heading">
                                 <a href="{{ url('t/post/'.$post->slug) }}">{{ $post->title }}</a>
                                 [ {{ $post->user->username }} ]
@@ -31,11 +31,19 @@
                                     {{ str_limit($post->content, config('traydes.string_limit')) }}
                                 </p>
 
-
                             </div>
 
                             <div class="panel-footer">
                                 <a href="{{ url('t/view/'.$post->category->id) }}">{{ $post->category->name }}</a> &raquo;
+                                {{ $post->published_at->diffForHumans() }}
+                            </div>
+                        </div>--}}
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {{ $post->published_at->format('M j, Y') }}
+                                {{ $post->title }}
+                                {{ $post->user->username }}
                                 {{ $post->published_at->diffForHumans() }}
                             </div>
                         </div>
