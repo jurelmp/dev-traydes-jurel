@@ -2,14 +2,12 @@
 
 namespace Traydes\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Traydes\Category;
 use Traydes\Post;
 use Traydes\Http\Requests\Index\SearchRequest;
 
 use Illuminate\Http\Request;
 use Traydes\Http\Requests;
-use Traydes\Http\Controllers\Controller;
 use Traydes\State;
 
 class IndexController extends Controller
