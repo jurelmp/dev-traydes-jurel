@@ -66,11 +66,11 @@ Route::group(['middleware' => 'auth'], function() {
 /**
  * sub domain routing for areas
  */
-Route::group(array('domain' => '{subdomain}.localhost:8000'), function()
+Route::group(array('domain' => '{subdomain}.traydes.local'), function()
 {
-    get('/t', function($subdomain)
+    get('/test', function($subdomain)
     {
-        return 'success sub domain routing';
+        return $subdomain;
     });
 });
 
