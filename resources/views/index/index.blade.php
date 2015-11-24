@@ -22,6 +22,7 @@
         <div class="col-md-11">--}}
 
             @if(!empty($categories))
+
                 <div class="row">
 
                     @foreach($categories as $category)
